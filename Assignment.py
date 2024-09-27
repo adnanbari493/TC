@@ -84,4 +84,4 @@ st.write("Track your interview practice and case studies here. (Feature in devel
 st.write("---")
 st.write("Developed by 4Sight Consulting Group | Powered by EKOSH Data")
 
-streamlit run Assignment.py
+
