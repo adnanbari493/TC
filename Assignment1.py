@@ -1,4 +1,4 @@
-pip install openai
+
 import streamlit as st
 import random
 import openai  # For GPT-4 API integration
