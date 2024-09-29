@@ -1,10 +1,11 @@
+pip install openai
 import streamlit as st
 import random
 import openai  # For GPT-4 API integration
 import pandas as pd
 
 # OpenAI API key (replace with your actual API key)
-openai.api_key = "your_openai_api_key"
+openai.api_key = "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"
 
 # Sample interview performance metrics data (replace with actual data)
 user_metrics = {
