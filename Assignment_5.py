@@ -21,7 +21,10 @@ areas_to_improve = [
 ]
 
 # Streamlit app starts here
-st.title("Interactive Interview Preparation Dashboard")
+st.title("SPJIMR Interview Preparation Platform")
+
+# Insert SPJIMR logo
+st.image("https://upload.wikimedia.org/wikipedia/commons/3/37/SPJIMR_Mumbai_Logo.png", width=300)
 
 # Sidebar for selecting Job Role
 st.sidebar.header("Job Role Selection")
