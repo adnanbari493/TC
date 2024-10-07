@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# Insert SPJIMR logo
+st.image("https://upload.wikimedia.org/wikipedia/en/thumb/0/03/S._P._Jain_Institute_of_Management_and_Research_logo.svg/1920px-S._P._Jain_Institute_of_Management_and_Research_logo.svg.png", width=300)
+
 # Sample data for pre-reads
 pre_reads_data = {
     "Class Date": ["12th October 2024", "15th October 2024", "18th October 2024"],
