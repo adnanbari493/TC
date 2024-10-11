@@ -21,20 +21,20 @@ student_queries = []
 
 # Function to interact with Gemini 1.5 API
 def get_gemini_response(question):
-    api_url = "https://generativelanguage.googleapis.com"  # Update with actual Gemini API endpoint
+    api_url = "https://generativelanguage.googleapis.com/v1/textGeneration"  # Updated URL
     headers = {
         "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
         "Content-Type": "application/json"
     }
     data = {
         "model": "gemini-1.5",  # Update if necessary
-        "messages": [{"role": "user", "content": question}]
+        "inputs": [{"text": question}]
     }
-    
+
     try:
         response = requests.post(api_url, json=data, headers=headers)
         response.raise_for_status()  # Check for HTTP errors
-        return response.json().get('choices')[0].get('message').get('content')
+        return response.json().get('generatedText')[0]
     except requests.exceptions.RequestException as e:
         return f"Error: {str(e)}"
 
