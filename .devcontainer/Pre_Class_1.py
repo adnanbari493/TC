@@ -21,7 +21,7 @@ student_queries = []
 
 # Function to interact with Gemini 1.5 API
 def get_gemini_response(question):
-    api_url = "https://ai.google.dev/api/rest"  # Update with actual Gemini API endpoint
+    api_url = "https://generativelanguage.googleapis.com"  # Update with actual Gemini API endpoint
     headers = {
         "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
         "Content-Type": "application/json"
