@@ -21,7 +21,7 @@ student_queries = []
 
 # Function to interact with Gemini 1.5 API
 def get_gemini_response(question):
-    api_url = "https://aistudio.google.com/app/u/1/apikey"  # Update with actual Gemini API endpoint
+    api_url = "https://console.cloud.google.com/apis/credentials/key/4875122a-6f02-481b-a983-fe21fdace952?authuser=1&project=gen-lang-client-0217856294"  # Update with actual Gemini API endpoint
     headers = {
         "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
         "Content-Type": "application/json"
