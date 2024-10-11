@@ -1,23 +1,9 @@
 import streamlit as st
 import pandas as pd
-import openai
+import requests
 
 # Insert SPJIMR logo
 st.image("https://upload.wikimedia.org/wikipedia/en/thumb/0/03/S._P._Jain_Institute_of_Management_and_Research_logo.svg/1920px-S._P._Jain_Institute_of_Management_and_Research_logo.svg.png", width=300)
-
-# Set your OpenAI API key here
-openai.api_key = 'AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M'
-
-# Function to call OpenAI's GPT model (Gemini 1.5)
-def ask_gpt(query):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # Use the appropriate model name (you can replace this with Gemini 1.5 if available)
-        messages=[
-            {"role": "system", "content": "You are an assistant to help students with their pre-read material."},
-            {"role": "user", "content": query}
-        ]
-    )
-    return response['choices'][0]['message']['content']
 
 # Sample data for pre-reads
 pre_reads_data = {
@@ -33,11 +19,27 @@ pre_reads_data = {
 # Store student queries to display to the faculty
 student_queries = []
 
+# Function to interact with Gemini 1.5 API
+def get_gemini_response(question):
+    api_url = "https://aistudio.google.com/app/u/1/apikey"  # Update with actual Gemini API endpoint
+    headers = {
+        "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
+        "Content-Type": "application/json"
+    }
+    data = {
+        "model": "gemini-1.5",  # Update if necessary
+        "messages": [{"role": "user", "content": question}]
+    }
+    
+    try:
+        response = requests.post(api_url, json=data, headers=headers)
+        response.raise_for_status()  # Check for HTTP errors
+        return response.json().get('choices')[0].get('message').get('content')
+    except requests.exceptions.RequestException as e:
+        return f"Error: {str(e)}"
+
 # Streamlit app starts here
 st.title("SPJIMR Pre Class Work Preparation Platform")
-
-# Insert SPJIMR logo
-st.image("https://upload.wikimedia.org/wikipedia/commons/3/37/SPJIMR_Mumbai_Logo.png", width=300)
 
 # Sidebar for selecting the class topic
 st.sidebar.header("Upcoming Class Topics")
@@ -59,9 +61,8 @@ st.subheader("Have questions on the Pre-Read?")
 user_input = st.text_input("Ask a question about the pre-read:")
 
 if user_input:
-    # Call GPT model to respond to the query
-    response = ask_gpt(user_input)
-    st.write(f"**Chatbot Response**: {response}")
+    chatbot_response = get_gemini_response(user_input)
+    st.write(f"**Chatbot Response**: {chatbot_response}")
     student_queries.append({"Topic": selected_topic, "Question": user_input})
 
 # Display student queries to the faculty
