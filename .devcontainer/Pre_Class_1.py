@@ -5,7 +5,7 @@ import google.generativeai as genai
 genai.configure(api_key="AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M")
 
 model = genai.GenerativeModel("gemini-1.5-flash")
-
+chat = model.start_chat(history=[])
 # Insert SPJIMR logo
 st.image("https://upload.wikimedia.org/wikipedia/en/thumb/0/03/S._P._Jain_Institute_of_Management_and_Research_logo.svg/1920px-S._P._Jain_Institute_of_Management_and_Research_logo.svg.png", width=300)
 
