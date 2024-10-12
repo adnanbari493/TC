@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import requests
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M")
+
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 # Insert SPJIMR logo
 st.image("https://upload.wikimedia.org/wikipedia/en/thumb/0/03/S._P._Jain_Institute_of_Management_and_Research_logo.svg/1920px-S._P._Jain_Institute_of_Management_and_Research_logo.svg.png", width=300)
@@ -21,6 +25,11 @@ student_queries = []
 
 # Function to interact with Gemini 1.5 API
 def get_gemini_response(question):
+    response = chat.send_message(prompt, stream=True)
+    for chunk in response:
+        if chunk.text:
+          st.write(chunk.text)
+    '''
     api_url = "https://generativelanguage.googleapis.com/v1/textGeneration"  # Updated URL
     headers = {
         "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
@@ -37,7 +46,7 @@ def get_gemini_response(question):
         return response.json().get('generatedText')[0]
     except requests.exceptions.RequestException as e:
         return f"Error: {str(e)}"
-
+      '''
 # Streamlit app starts here
 st.title("SPJIMR Pre Class Work Preparation Platform")
 
