@@ -29,24 +29,7 @@ def get_gemini_response(question):
     for chunk in response:
         if chunk.text:
           st.write(chunk.text)
-    '''
-    api_url = "https://generativelanguage.googleapis.com/v1/textGeneration"  # Updated URL
-    headers = {
-        "Authorization": "AIzaSyCk58NLt84soazRoveHi5chHx9vBAAWE2M",  # Replace with your API key
-        "Content-Type": "application/json"
-    }
-    data = {
-        "model": "gemini-1.5",  # Update if necessary
-        "inputs": [{"text": question}]
-    }
 
-    try:
-        response = requests.post(api_url, json=data, headers=headers)
-        response.raise_for_status()  # Check for HTTP errors
-        return response.json().get('generatedText')[0]
-    except requests.exceptions.RequestException as e:
-        return f"Error: {str(e)}"
-      '''
 # Streamlit app starts here
 st.title("SPJIMR Pre Class Work Preparation Platform")
 
