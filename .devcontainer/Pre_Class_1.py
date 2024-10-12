@@ -25,7 +25,7 @@ student_queries = []
 
 # Function to interact with Gemini 1.5 API
 def get_gemini_response(question):
-    response = chat.send_message(prompt, stream=True)
+    response = chat.send_message(question, stream=True)
     for chunk in response:
         if chunk.text:
           st.write(chunk.text)
