@@ -7,6 +7,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import googleapiclient.discovery
 
+streamlit
+selenium
+webdriver-manager
+requests
+beautifulsoup4
+pandas
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+googleapiclient
+
 # --- STREAMLIT UI ---
 st.title("📊 Real-Time YouTube Views Tracker")
 st.write("Track live YouTube views from Datamuni or YouTube API.")
